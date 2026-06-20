@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>写真合成報告書作成ツール v1.0</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <h1>写真合成報告書作成ツール v1.0</h1>
+    
+    <div class="notice-box">
+        <strong>利用上の注意</strong><br>
+        ・登録可能画像は最大36枚（6ページ）です。<br>
+        ・タイトルは40文字以内です。<br>
+        ・コメントは120文字以内（3行程度）です。<br>
+        ・備考は別ページで出力されます。
+    </div>
+
+    <div class="action-panel">
+        <div class="upload-section">
+            <label>① 画像を選択（複数可）:</label>
+            <input type="file" id="imageInput" accept="image/*" multiple>
+        </div>
+
+        <div id="imageCounter" class="image-counter">
+            登録画像数：0 / 36枚<br>
+            出力ページ数：0 / 6ページ
+        </div>
+        
+        <div class="report-info-section">
+            <label>② レポート基本情報:</label>
+            <input type="text" id="reportTitle" placeholder="タイトル (例: 家屋評価報告書)">
+            <div class="meta-inputs">
+                <input type="date" id="reportDate">
+                <input type="text" id="visitorName" placeholder="訪問者氏名">
+            </div>
+            <textarea id="reportRemarks" placeholder="最終ページの備考欄に記載する内容（空欄の場合は表示されません）"></textarea>
+        </div>
+
+        <div class="export-section">
+            <label>③ まとめてダウンロード:</label>
+            <button id="exportPdfBtn" class="btn-pdf">📄 PDF形式で出力</button>
+            <button id="exportImgBtn" class="btn-img">🖼 画像形式(JPEG)で出力</button>
+        </div>
+    </div>
+
+    <div id="previewArea" class="preview-area"></div>
+
+    <div id="printContainer" class="print-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
